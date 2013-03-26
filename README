@@ -1,0 +1,14 @@
+db/
+-Stores local sqlite databases
+
+modules/
+-Stores javascript attack modules
+
+tests/
+-Various tests
+
+hook/
+-Hook code
+
+static/
+-This folder holds regular files that are web accessible
