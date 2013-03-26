@@ -1,14 +1,82 @@
-db/
--Stores local sqlite databases
+Xssive Demonstration Framework.
 
-modules/
--Stores javascript attack modules
+For more information visit here - http://makthpla.net/xssive/
 
-tests/
--Various tests
+The Xssive Framework is a tool written in python that not only
+demonstrates cross site scripting vulnerabilities, it also allows a security
+professional easily manage and launch escalated attacks on multiple
+different hooked targets simultaneously. This tool was developed using
+web.py; a minimalist python based web framework. All of the libraries I
+used in development are Free and open source.
 
-hook/
--Hook code
+There are many tools out there that use similar techniques, most of them
+are better. I aimed to allow multiple different interfaces take advantage of this
+tool such as a web page, irc bot, or a terminal based tool. It would also allow for 
+simultaneous control by multiple different parties at once.
+This tool was developed as a 3rd year project in DCU.
 
-static/
--This folder holds regular files that are web accessible
+Folders and their usage.
+db/ 		-Stores local sqlite databases
+modules/ 	-Stores javascript attack modules
+tests/		-Various tests
+hook/		-Hook code
+static/		-This folder holds regular files that are web accessible
+
+
+Library Installation
+
+web.py - ( http://webpy.org )
+This is a simple, lightweight, standalone python based web framework. I
+found it very easy to use and felt it would greatly suit the planned tools
+requirements. I have never used it beforeÍ¾ the libraries website was very
+clear cut and contained many demonstrative examples.
+Installation instructions - ( http://webpy.org/install )
+
+I installed it on my ubuntu 12.10 distribution using the following:
+wget http://webpy.org/static/web.py-0.37.tar.gz
+python setup.py install - in the extracted folder.
+Xssive Installation Guide
+
+In order to use this tool you must have python2.7.3 installed. This tool was developed for Linux
+based operating systems, it could however be easily edited to function with other Operating
+Systems.
+Step 1: Firstly download the Xssive.tar.gz which is available at the following location:
+http://makthepla.net/Xssive.tar.gz
+
+Step 2: Then you need to uncompress the Gzip by using the following command on Linux
+$ tar -zxvf Xssive.tar.gz
+
+Step 3: Xssive.py is the main xssive proxy server. It may be best to run this as root as it needs
+to use web sockets. If not create a user with the appropriate permissions. It can be started using
+one the following command.
+$ sudo python Xssive.py
+
+Step 4: When your tool is running you will be presented with the current host location/port and a
+Control key (highlighted in red). This control key will be used by any control devices to interact
+with the server.
+
+Step 5: For a demonstration use the simple_control_device.py. The control device needs the
+host location of the proxy server and the control key to be passed into it.
+Troubleshoot: The demonstration control device uses this -H (host) in creating the Urls, make
+sure the host has not got a final /
+$ python simple_control_device.py -H http://theXssiveProxyHost -K 17b573eada554ba3b0613eb418094cd4
+
+
+
+Help Options
+
+There is a help menu available when you run the Xssive.py file which is the main server.
+Use the -h argument. You will be presented with the following information.
+Xssive Demonstration Framework
+
+optional arguments:
+    -h, --help          Show this help message and exit
+    -p PORT             Specify a port.
+    -H HOST             Specify where to run proxy server. Default is the current host.
+    -v                  Display example injection vectors.
+    -mysql DBINFO       Provide information for an external Database to use in the format  
+                        "host,user,passwd,db". By default this tool will use a local SQLite database.
+    -db FILE            Provide a named SQLite database to use.
+    -page PAGE          Provide a webpage , the contents will be displayed at the 
+                        /Page location.For use with attack code.
+
